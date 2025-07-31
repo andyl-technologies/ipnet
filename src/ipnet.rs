@@ -1781,8 +1781,8 @@ mod tests {
     use super::*;
 
     macro_rules! make_ipnet_vec {
-        ($($x:expr),*) => ( vec![$($x.parse::<IpNet>().unwrap(),)*] );
-        ($($x:expr,)*) => ( make_ipnet_vec![$($x),*] );
+        ($($x:expr_2021),*) => ( vec![$($x.parse::<IpNet>().unwrap(),)*] );
+        ($($x:expr_2021,)*) => ( make_ipnet_vec![$($x),*] );
     }
 
     #[test]
@@ -1838,7 +1838,7 @@ mod tests {
     }
 
     macro_rules! make_ipv4_subnets_test {
-        ($name:ident, $start:expr, $end:expr, $min_prefix_len:expr, $($x:expr),*) => (
+        ($name:ident, $start:expr_2021, $end:expr_2021, $min_prefix_len:expr_2021, $($x:expr_2021),*) => (
             #[test]
             fn $name() {
                 let subnets = IpSubnets::from(Ipv4Subnets::new(
@@ -1850,13 +1850,13 @@ mod tests {
                 assert_eq!(subnets.collect::<Vec<IpNet>>(), results);
             }
         );
-        ($name:ident, $start:expr, $end:expr, $min_prefix_len:expr, $($x:expr,)*) => (
+        ($name:ident, $start:expr_2021, $end:expr_2021, $min_prefix_len:expr_2021, $($x:expr_2021,)*) => (
             make_ipv4_subnets_test!($name, $start, $end, $min_prefix_len, $($x),*);
         );
     }
 
     macro_rules! make_ipv6_subnets_test {
-        ($name:ident, $start:expr, $end:expr, $min_prefix_len:expr, $($x:expr),*) => (
+        ($name:ident, $start:expr_2021, $end:expr_2021, $min_prefix_len:expr_2021, $($x:expr_2021),*) => (
             #[test]
             fn $name() {
                 let subnets = IpSubnets::from(Ipv6Subnets::new(
@@ -1868,7 +1868,7 @@ mod tests {
                 assert_eq!(subnets.collect::<Vec<IpNet>>(), results);
             }
         );
-        ($name:ident, $start:expr, $end:expr, $min_prefix_len:expr, $($x:expr,)*) => (
+        ($name:ident, $start:expr_2021, $end:expr_2021, $min_prefix_len:expr_2021, $($x:expr_2021,)*) => (
             make_ipv6_subnets_test!($name, $start, $end, $min_prefix_len, $($x),*);
         );
     }
